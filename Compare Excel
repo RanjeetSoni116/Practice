@@ -1,0 +1,43 @@
+import xlrd
+from openpyxl import load_workbook
+import openpyxl
+
+wb = openpyxl.Workbook()
+wb = load_workbook(filename='test1.xlsx')
+wb.create_sheet(index=1, title='City')
+wb.create_sheet(index=2, title='State')
+wb.create_sheet(index=3, title='Country')
+wb.create_sheet(index=4, title='PostalCode')
+wb.create_sheet(index=5, title='Address')
+wb.create_sheet(index=6, title='URL')
+wb.create_sheet(index=7, title='CompanyName')
+State = wb.active
+City_Excel = wb.get_sheet_by_name('City')
+State_Excel = wb.get_sheet_by_name('State')
+Country_Excel = wb.get_sheet_by_name('Country')
+PostalCode_Excel = wb.get_sheet_by_name('PostalCode')
+Address_Excel = wb.get_sheet_by_name('Address')
+URL_Excel = wb.get_sheet_by_name('URL')
+Company_Name_Excel = wb.get_sheet_by_name('CompanyName')
+
+
+# c1 = sheet.cell(row=1,column=1)
+# c1.value=""
+# c2 = sheet.cell(row=1,column=2)
+
+workbook1 = xlrd.open_workbook('test1.xlsx')
+workbook2 = xlrd.open_workbook('test2.xls')
+workshee1 = workbook1.sheet_by_name('1')
+workshee2 = workbook2.sheet_by_name('1')
+
+for row in range(workshee1.nrows):
+    data1 = str(workshee1.cell_value(row,9))
+    for i in range(row, +1):
+        data2 = str(workshee2.cell_value(i,42))
+        if data1 == data2:
+            pass
+        else:
+            print(data1)
+
+
+
